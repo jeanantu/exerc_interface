@@ -19,7 +19,7 @@ public class Program {
 		
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 		
-		System.out.println("Entre com os dados do aluguel");
+		System.out.println("Entre com os dados do aluguel brother");
 		System.out.print("Modelo do carro: ");
 		String carModel = sc.nextLine();
 		
