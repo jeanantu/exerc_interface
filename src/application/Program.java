@@ -9,6 +9,7 @@ import model.entities.CarRental;
 import model.entities.Vehicle;
 import model.services.BrasilTaxService;
 import model.services.RentalService;
+import model.services.UsaTaxService;
 
 public class Program {
 
@@ -36,10 +37,17 @@ public class Program {
 		System.out.print("Entre com o preço por dia: ");
 		Double pricePerDay = sc.nextDouble();
 		
-		RentalService rentalService = new RentalService(pricePerDay, pricePerHour, new BrasilTaxService());
+		System.out.print("Entre pais 1 para USA e 2 para Brasil: ");
+		Integer pais = sc.nextInt();
 		
-		rentalService.processInvoice(cr);
-		
+		if (pais == 1) {
+			RentalService rentalService = new RentalService(pricePerDay, pricePerHour, new UsaTaxService());
+			rentalService.processInvoice(cr);
+		}else {
+			RentalService rentalService = new RentalService(pricePerDay, pricePerHour, new BrasilTaxService());
+			rentalService.processInvoice(cr);
+		}
+			
 		System.out.println("FATURA: ");
 		System.out.println("Pagamento basico: "+cr.getInvoice().getBasicPayment());
 		System.out.println("Imposto: "+cr.getInvoice().getTax());
